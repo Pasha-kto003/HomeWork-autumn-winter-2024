@@ -8,7 +8,7 @@ def main():
     if palindrom(input_row):
         print('Да')
     else:
-        print('Нет')
+        print('Нет') #//
 
 
 if __name__ == "__main__":
