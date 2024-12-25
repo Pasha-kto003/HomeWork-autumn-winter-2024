@@ -1,5 +1,4 @@
 def is_prime(num):
-    """Проверка на простое число."""
     if num < 2:
         return False
     for i in range(2, int(num ** 0.5) + 1):
@@ -8,7 +7,6 @@ def is_prime(num):
     return True
 
 def primes_in_range(start, end):
-    """Поиск простых чисел в заданном диапазоне."""
     if not (isinstance(start, int) and isinstance(end, int)) or start < 0 or end < 0:
         return "Ошибка: Диапазон должен быть неотрицательными числами."
     if start > end:
