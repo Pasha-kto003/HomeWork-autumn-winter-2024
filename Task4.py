@@ -1,47 +1,49 @@
-def read_matrix(rows):
+def read_matrix(rows, cols):
+    """Считывание матрицы размером rows x cols."""
     matrix = []
-    for _ in range(rows):
-        row = input("Введите элементы строки через пробел: ").strip().split()
-        matrix.append([int(num) for num in row])
+    for i in range(rows):
+        while True:
+            try:
+                row = list(map(int, input(f"Введите элементы строки {i + 1} через пробел: ").strip().split()))
+                if len(row) != cols:
+                    raise ValueError("Количество элементов в строке не совпадает с заданным количеством столбцов.")
+                matrix.append(row)
+                break
+            except ValueError as e:
+                print(f"Ошибка: {e}. Попробуйте ещё раз.")
     return matrix
 
 
-def slojenie_matric(matrix1, matrix2):
-    stroki = len(matrix1)
-    stolb = len(matrix1[0])
-    result_matrix = []
-    for i in range(stroki):
-        result_row = []
-        for j in range(stolb):
-            result_row.append(matrix1[i][j] + matrix2[i][j])
-        result_matrix.append(result_row)
-    return result_matrix
+def add_matrices(matrix1, matrix2):
+    """Сложение двух матриц."""
+    return [[matrix1[i][j] + matrix2[i][j] for j in range(len(matrix1[0]))] for i in range(len(matrix1))]
 
 
 def main():
-    # Считываем размеры матриц
+    """Основная функция программы."""
     try:
-        stroki = int(input("Введите количество строк матрицы (больше или равно 2): "))
-        stolb = int(input("Введите количество столбцов матрицы (больше или равно 2): "))
-        if stroki < 2 or stolb < 2:
-            print("Ошибка: размер матрицы должен быть больше 2.")
+        rows = int(input("Введите количество строк матрицы (>= 2): "))
+        cols = int(input("Введите количество столбцов матрицы (>= 2): "))
+        if rows < 2 or cols < 2:
+            print("Ошибка: Размеры матрицы должны быть >= 2.")
             return
+
         print("Введите первую матрицу:")
-        matrix1 = read_matrix(stroki)
+        matrix1 = read_matrix(rows, cols)
+
         print("Введите вторую матрицу:")
-        matrix2 = read_matrix(stroki)
-        # Проверка на совпадение размеров
-        if len(matrix1) != len(matrix2) or len(matrix1[0]) != len(matrix2[0]):
-            print("Ошибка: Размеры матриц должны совпадать.")
-            return
+        matrix2 = read_matrix(rows, cols)
+
         # Сложение матриц
-        resultat = slojenie_matric(matrix1, matrix2)
+        result = add_matrices(matrix1, matrix2)
+
         # Вывод результата
         print("Результат сложения матриц:")
-        for row in resultat:
+        for row in result:
             print(" ".join(map(str, row)))
+
     except ValueError:
-        print("Ошибка: Пожалуйста, введите корректные целые числа.")
+        print("Ошибка: Введите корректные целые числа.")
 
 
 if __name__ == "__main__":
