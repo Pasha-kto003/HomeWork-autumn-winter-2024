@@ -1,5 +1,4 @@
 def read_matrix(rows, cols):
-    """Считывание матрицы размером rows x cols."""
     matrix = []
     for i in range(rows):
         while True:
@@ -15,12 +14,10 @@ def read_matrix(rows, cols):
 
 
 def add_matrices(matrix1, matrix2):
-    """Сложение двух матриц."""
     return [[matrix1[i][j] + matrix2[i][j] for j in range(len(matrix1[0]))] for i in range(len(matrix1))]
 
 
 def main():
-    """Основная функция программы."""
     try:
         rows = int(input("Введите количество строк матрицы (>= 2): "))
         cols = int(input("Введите количество столбцов матрицы (>= 2): "))
