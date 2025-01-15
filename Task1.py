@@ -5,7 +5,7 @@ def time_func(value,fromU,toU):
     converted_value = value_in_sec / units[toU]
     return converted_value
 
-
+##
 value = input("Введите значение времени: ")
 fromU = input("Введите исходную единицу времени (сек мин час): ")
 toU = input("Введите выводимую единицу времени (сек мин час): ")
