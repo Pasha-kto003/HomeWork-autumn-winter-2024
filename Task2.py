@@ -1,38 +1,34 @@
-def vklad(a, n):
-    #Мин. вклад
+def vklad(money, years):
     min_vklad = 30000
-    #Проверка на минимальный депозит
-    if a < min_vklad:
-        return "Недостаточно средств для осуществления депозита"
-    #Базовый процент
+    if money < min_vklad:
+        return "Недостаточно средств для осуществления вклада"
     percent = 0
-    #Прибавка
-    if a >= 10000:
-        percent += (a // 10000) * 0.003
+    if money >= 10000:
+        percent += (money // 10000) * 0.003
         if percent >= 0.05:
             percent = 0.05
-    #проценты от длительности
-    if n <= 3:
+    if years <= 3:
         dop_percent = 0.03
-    if 3 < n < 7:
+        print(f'Ваш доп. процент по вкладу: {dop_percent}')
+    if 3 < years < 7:
         dop_percent = 0.05
-    elif n > 6:
+        print(f'Ваш доп. процент по вкладу: {dop_percent}')
+    elif years > 6:
         dop_percent = 0.02
-    #Все проценты
+        print(f'Ваш доп. процент по вкладу: {dop_percent}')
     total_percent = percent + dop_percent
-    #Сумма вклада
-    total_amount = a
-    #Сложный процент
-    for year in range(1,3):
+    total_amount = money
+    for year in range(1, 3):
         total_amount *= (1 + total_percent)
-    profit = total_amount - a
-    return profit
+    message = total_amount - money
+    return message
+
 
 if __name__ == "__main__":
     try:
-        a = int(input("Введите сумму вклада (в рублях): "))
-        n = int(input("Введите срок вклада (в годах): "))
-        profit = vklad(a, n)
+        money = int(input("Введите сумму вклада (в рублях): "))
+        years = int(input("Введите срок вклада (в годах): "))
+        profit = vklad(money, years)
         print(f"Сумма прибыли: {profit} рублей")
     except ValueError as ve:
         print(f"Ошибка: {ve}")

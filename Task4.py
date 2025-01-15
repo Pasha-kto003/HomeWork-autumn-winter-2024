@@ -1,12 +1,12 @@
 def read_matrix(rows):
     matrix = []
-    for _ in range(rows):
-        row = input("Введите элементы строки через пробел: ").strip().split()
+    for i in range(rows):
+        row = input(f"Введите элементы {i + 1}-ой строки через пробел: ").strip().split()
         matrix.append([int(num) for num in row])
     return matrix
 
 
-def slojenie_matric(matrix1, matrix2):
+def sum_matrix(matrix1, matrix2):
     stroki = len(matrix1)
     stolb = len(matrix1[0])
     result_matrix = []
@@ -19,7 +19,6 @@ def slojenie_matric(matrix1, matrix2):
 
 
 def main():
-    # Считываем размеры матриц
     try:
         stroki = int(input("Введите количество строк матрицы (больше или равно 2): "))
         stolb = int(input("Введите количество столбцов матрицы (больше или равно 2): "))
@@ -30,15 +29,13 @@ def main():
         matrix1 = read_matrix(stroki)
         print("Введите вторую матрицу:")
         matrix2 = read_matrix(stroki)
-        # Проверка на совпадение размеров
         if len(matrix1) != len(matrix2) or len(matrix1[0]) != len(matrix2[0]):
             print("Ошибка: Размеры матриц должны совпадать.")
             return
         # Сложение матриц
-        resultat = slojenie_matric(matrix1, matrix2)
-        # Вывод результата
+        result = sum_matrix(matrix1, matrix2)
         print("Результат сложения матриц:")
-        for row in resultat:
+        for row in result:
             print(" ".join(map(str, row)))
     except ValueError:
         print("Ошибка: Пожалуйста, введите корректные целые числа.")

@@ -1,5 +1,4 @@
-def prostoe(num):
-    # Проверка на простое число
+def sample_numbers(num):
     if num < 2:
         return False
     for i in range(2, int(num ** 0.5) + 1):
@@ -8,19 +7,16 @@ def prostoe(num):
     return True
 
 
-def prostoe_in_range(start, end):
-    # Проверка на ошибки
+def sample_numbers_range(start, end):
     if not (isinstance(start, int) and isinstance(end, int)):
         return "Ошибка"
-    if start > end:
-        return "Ошибка"
-    if start < 0 or end < 0:
+    if (start > end) or (start < 0 or end < 0):
         return "Ошибка"
 
     primes = []
-    for num in range(start, end + 1):
-        if prostoe(num):
-            primes.append(num)
+    for number in range(start, end + 1):
+        if sample_numbers(number):
+            primes.append(number)
     return primes
 
 
@@ -28,5 +24,5 @@ start_input = input("Введите начало диапазона: ")
 end_input = input("Введите конец диапазона: ")
 start = int(start_input)
 end = int(end_input)
-result = prostoe_in_range(start, end)
+result = sample_numbers_range(start, end)
 print("Простые числа в диапазоне {}: {}".format((start, end), result))

@@ -6,9 +6,9 @@ def palindrom(s):
 def main():
     input_row = input("Введите вашу строку: ")
     if palindrom(input_row):
-        print('Да')
+        print('Данное слово является палиндромом')
     else:
-        print('Нет')
+        print('Данное слово не является палиндромом')
 
 
 if __name__ == "__main__":
